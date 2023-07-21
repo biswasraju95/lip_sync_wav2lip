@@ -2,7 +2,7 @@
 Wav2Lip Sync is an innovative open-source project that harnesses the power of the state-of-the-art Wav2Lip algorithm to achieve real-time lip synchronization with unprecedented accuracy. The project aims to revolutionize lip-syncing capabilities for various applications, including video editing, dubbing, virtual characters, and more. 
 Lip syncing has always been a challenging task in the realm of multimedia, often requiring significant manual effort and precise adjustments. However, with Wav2Lip Sync, this process becomes effortless and efficient. The algorithm takes advantage of Deep Learning techniques to automatically align lip movements in a target video to match a given audio source.
 
-#Prerequisites :
+##Prerequisites :
 
 
 Python 3.6
@@ -10,7 +10,7 @@ ffmpeg: sudo apt-get install ffmpeg
 Install necessary packages using pip install -r requirements.txt.
 Face detection pre-trained model should be downloaded to face_detection/detection/sfd/s3fd.pth. Alternative link if the above does not work.
 
-#Tips for better results:
+##Tips for better results:
 
 
 Experiment with the --pads argument to adjust the detected face bounding box. Often leads to improved results. You might need to increase the bottom padding to include the chin region. E.g. --pads 0 20 0 0.
@@ -18,7 +18,7 @@ If you see the mouth position dislocated or some weird artifacts such as two mou
 Experiment with the --resize_factor argument, to get a lower resolutionlower-resolution video. Why? The models are trained on faces whichthat were at a lower resolution. You might get better, visually pleasing results for 720p videos than for 1080p videos (in many cases, the latter works well too).
 The Wav2Lip model without GAN usually needs more experimenting with the above two to get the most ideal results, and sometimes, can give you a better result as well.
 
-#Preparing LRS2 for training
+##Preparing LRS2 for training
 
 
 Our models are trained on LRS2
@@ -30,14 +30,14 @@ data_root (mvlrs_v1)
 Place the LRS2 filelists (train, val, test) .txt files in the filelists/ folder.
 
 
-#Preprocess the dataset for fast training
+##Preprocess the dataset for fast training
 
 
 python preprocess.py --data_root data_root/main --preprocessed_root lrs2_preprocessed/
 Additional options like batch_size and the number of GPUs to use in parallel to use can also be set.
 
 
-#Preprocessed LRS2 folder structure
+##Preprocessed LRS2 folder structure
 
 
 preprocessed_root (lrs2_preprocessed)
@@ -48,14 +48,14 @@ preprocessed_root (lrs2_preprocessed)
 
 
 
-#Train!
+##Train!
 
 
 There are two major steps: (i) Train the expert lip-sync discriminator, (ii) Train the Wav2Lip model(s).
 
 
 
-#Training the expert discriminator
+##Training the expert discriminator
 
 
 You can download the pre-trained weights if you want to skip this step. To train it:
@@ -64,7 +64,7 @@ python color_syncnet_train.py --data_root lrs2_preprocessed/ --checkpoint_dir <f
 
 
 
-#Training the Wav2Lip models
+##Training the Wav2Lip models
 
 
 
